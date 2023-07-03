@@ -43,7 +43,7 @@ let computerMove = "Wouldn't you like to know";
  const playRound = (playerSelection,computerSelection) =>{
     let round = "3 out of 5?";
     let player = playerSelection.toLowerCase();
-    console.log(player, " " ,computerSelection);
+    console.log(`You picked ${player} and the computer picked ${computerSelection}`);
     if(player === "rock"){
         switch (computerSelection){
             case "Rock":
@@ -72,10 +72,10 @@ let computerMove = "Wouldn't you like to know";
         }
 
     }
-    else if(player === "scissors"){
+    else if(player === "scissors" || player === "scissor"){
         switch (computerSelection){
             case "Rock":
-                return round = "You Lose! Rock Beats Paper!";
+                return round = "You Lose! Rock Beats Scissors!";
                 break;
             case "Paper":
                 return round = "You Win! Scissors Beats Rock!";
