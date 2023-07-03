@@ -40,19 +40,22 @@ let computerMove = "Wouldn't you like to know";
  *  if playerSelection = rock 
  *   then switch case for the computers answer 
  */
- const playRound = (playerSelection,computerSelection) =>{
+ const playRound = (playerSelection,computerSelection, score) =>{
     let round = "3 out of 5?";
     let player = playerSelection.toLowerCase();
     console.log(`You picked ${player} and the computer picked ${computerSelection}`);
     if(player === "rock"){
         switch (computerSelection){
             case "Rock":
-                return round = "You must've been reading my mind!";
+                return round = "You must've been reading my mind!" ;
+                r
                 break;
             case "Paper":
+                scoreboard(-1);
                 return round = "You Lose! Paper Beats Rock";
                 break;
             case "Scissors":
+                scoreboard(1);
                 return round = "You Win! Rock Beats Scissors";
                 break; 
         }
@@ -61,12 +64,14 @@ let computerMove = "Wouldn't you like to know";
     else if(player === "paper"){
         switch (computerSelection){
             case "Rock":
+                scoreboard(1);
                 return round = "You Win! Paper Beats Rock!";
                 break;
             case "Paper":
-                return round = "You must've been reading my mind!";
+                return round = "You must've been reading my mind!" ;
                 break;
             case "Scissors":
+                scoreboard(-1);
                 return round = "You Lose! Scissors Beats Paper";
                 break; 
         }
@@ -75,25 +80,38 @@ let computerMove = "Wouldn't you like to know";
     else if(player === "scissors" || player === "scissor"){
         switch (computerSelection){
             case "Rock":
+                scoreboard(-1);
                 return round = "You Lose! Rock Beats Scissors!";
                 break;
             case "Paper":
+                scoreboard(1);
                 return round = "You Win! Scissors Beats Rock!";
                 break;
             case "Scissors":
-                return round = "You must've been reading my mind";
+                return round = "You must've been reading my mind" ;
                 break; 
         }
 
     }
     else {
-        return round = "Hmm Can't find that one maybe try again"
+        return round = "Hmm Can't find that one maybe try again";
     }
 
  }
-const playerSelection = prompt("Rock,Paper, or Scissors");
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+ function scoreboard (score){
+   score =+ score;
+   //return score;
+    return score;
+ };
 
-getComputerChoice();
+const game = (score) =>{
+    for( let i = 0; i < 5; i++){ 
+    const playerSelection = prompt("Rock,Paper,or Scissors");
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+    }
+};
+game();
+
+
 
