@@ -1,5 +1,5 @@
 ## p-RockPaperScissors
-#####Rock Paper Scissors game for The Odin Project
+##### Rock Paper Scissors game for The Odin Project
 
 the scoreboard is by far the hardest part for me. I still didnt get it to work in the end but ill come back to it and hopefully will have a better understanding in the future
 
