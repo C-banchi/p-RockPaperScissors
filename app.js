@@ -51,7 +51,7 @@ let computerMove = "Wouldn't you like to know";
                 r
                 break;
             case "Paper":
-                scoreboard(-1);
+                 scoreboard(-1);
                 return round = "You Lose! Paper Beats Rock";
                 break;
             case "Scissors":
@@ -65,13 +65,13 @@ let computerMove = "Wouldn't you like to know";
         switch (computerSelection){
             case "Rock":
                 scoreboard(1);
-                return round = "You Win! Paper Beats Rock!";
+                return round = "You Win! Paper Beats Rock!" ;
                 break;
             case "Paper":
                 return round = "You must've been reading my mind!" ;
                 break;
             case "Scissors":
-                scoreboard(-1);
+                 scoreboard(-1);
                 return round = "You Lose! Scissors Beats Paper";
                 break; 
         }
@@ -80,7 +80,7 @@ let computerMove = "Wouldn't you like to know";
     else if(player === "scissors" || player === "scissor"){
         switch (computerSelection){
             case "Rock":
-                scoreboard(-1);
+                 scoreboard(-1);
                 return round = "You Lose! Rock Beats Scissors!";
                 break;
             case "Paper":
@@ -98,16 +98,17 @@ let computerMove = "Wouldn't you like to know";
     }
 
  }
+let totalScore = 0;
  function scoreboard (score){
-   score =+ score;
-   //return score;
-    return score;
+   totalScore +=score;
+   return totalScore;
  };
 
-const game = (score) =>{
+const game = () =>{
     for( let i = 0; i < 5; i++){ 
     const playerSelection = prompt("Rock,Paper,or Scissors");
     const computerSelection = getComputerChoice();
+   
     console.log(playRound(playerSelection, computerSelection));
     }
 };
