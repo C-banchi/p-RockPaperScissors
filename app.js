@@ -111,6 +111,7 @@ const game = () =>{
    
     console.log(playRound(playerSelection, computerSelection));
     }
+    console.log(scoreboard(0));
 };
 game();
 
