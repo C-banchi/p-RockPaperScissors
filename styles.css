@@ -1,0 +1,61 @@
+.header,
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.footer {
+  background: #eee;
+  justify-content: center;
+  align-self: center;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+}
+a {
+  color: #667;
+  text-decoration: none;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: Roboto, sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  width: 100px;
+}
+.scoreboard {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 10px;
+}
+.compScore .userScore {
+  border: 1px solid #eee;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  max-width: 300px;
+  padding: 15px;
+}
+.rpsGame {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  flex-direction: row;
+  gap: 25px;
+  margin-top: auto;
+}
