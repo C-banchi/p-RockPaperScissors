@@ -9,6 +9,7 @@
   background: #eee;
   justify-content: center;
   align-self: center;
+  color: rgb(233, 178, 106);
 }
 
 ul {
@@ -19,30 +20,30 @@ ul {
   gap: 16px;
 }
 a {
-  color: #667;
+  color: rgb(233, 178, 106);
   text-decoration: none;
 }
 .body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 90vh;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: Roboto, sans-serif;
-  justify-content: center;
   align-items: center;
+  gap: 25px;
 }
 img {
   width: 100px;
 }
 .scoreboard {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-items: center;
   flex-wrap: wrap;
   gap: 30px;
   padding: 10px;
+  color: rgb(233, 178, 106);
 }
 .compScore .userScore {
   border: 1px solid #eee;
@@ -53,9 +54,34 @@ img {
 }
 .rpsGame {
   display: flex;
-  flex: 1;
   justify-content: center;
+  align-items: center;
   flex-direction: row;
   gap: 25px;
-  margin-top: auto;
+  /* margin-top: auto; */
+}
+.rpsGame > img {
+  width: 250px;
+}
+button {
+  background-color: transparent;
+  border: 0;
+  color: rgb(233, 178, 106);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  margin-top: 1.5rem;
+  width: 100%; /* Large, mobile-friendly touch target */
+}
+.computer {
+  border-style: dashed;
+  border-color: red;
+}
+.player {
+  border-style: solid;
+  border-color: green;
+}
+.tie {
+  border-style: dotted dashed solid double;
+  border-color: blue;
 }

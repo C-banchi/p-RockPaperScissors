@@ -12,19 +12,25 @@
         <li><img src="./logo.png" alt="Odin Project Branding" /></li>
       </ul>
       <ul class="right-links">
-        <li><a href="#">New Game</a></li>
+        <button onclick="newGame()">New Game</button>
       </ul>
     </div>
     <!--  -->
     <div class="body">
       <div class="scoreboard">
         <div class="compScore">Computer Score:</div>
-        <div class="userScore">Your Score:</div>
+        <div class="userScore">Player Score:</div>
       </div>
       <div class="rpsGame">
-        <div class="rock">🪨</div>
-        <div class="paper">📄</div>
-        <div class="scissors">✂️</div>
+        <div class="rock" id="game">
+          <img src="./rock.jpeg" alt="Rock" onclick="game('rock')" />
+        </div>
+        <div class="paper" id="game">
+          <img src="./paper.png" alt="Paper" onclick="game('paper')" />
+        </div>
+        <div class="scissors" id="game">
+          <img src="./scissors.png" alt="scissors" onclick="game('scissors')" />
+        </div>
       </div>
     </div>
     <div class="footer">By: Chance Banchi</div>

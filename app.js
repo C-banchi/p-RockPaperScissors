@@ -11,6 +11,8 @@ I will set a random number generator 0-2
 2 = paper 
 3= scissor 
 then return the string out 
+
+Shout out to https://github.com/parkercon/ git hub submission for the dom update of the score code
 */
 
 const getComputerChoice = () => {
@@ -20,13 +22,13 @@ const getComputerChoice = () => {
   let computerMove = "Wouldn't you like to know";
   // I set this to a string incase nothing happened .. error message
   if (randomNum === 1) {
-    computerMove = "Rock";
+    computerMove = "rock";
     return computerMove;
   } else if (randomNum === 2) {
-    computerMove = "Paper";
+    computerMove = "paper";
     return computerMove;
   } else {
-    computerMove = "Scissors";
+    computerMove = "scissors";
     return computerMove;
   }
 };
@@ -38,72 +40,84 @@ const getComputerChoice = () => {
  *  if playerSelection = rock
  *   then switch case for the computers answer
  */
-const playRound = (playerSelection, computerSelection, score) => {
-  let round = "3 out of 5?";
+let playerScore = 0;
+let computerScore = 0;
+let roundWinner = "";
+
+const playRound = (playerSelection, computerSelection) => {
+  clearSelections();
   let player = playerSelection.toLowerCase();
-  console.log(
-    `You picked ${player} and the computer picked ${computerSelection}`
-  );
-  if (player === "rock") {
-    switch (computerSelection) {
-      case "Rock":
-        return (round = "You must've been reading my mind!");
-        r;
-        break;
-      case "Paper":
-        scoreboard(-1);
-        return (round = "You Lose! Paper Beats Rock");
-        break;
-      case "Scissors":
-        scoreboard(1);
-        return (round = "You Win! Rock Beats Scissors");
-        break;
-    }
-  } else if (player === "paper") {
-    switch (computerSelection) {
-      case "Rock":
-        scoreboard(1);
-        return (round = "You Win! Paper Beats Rock!");
-        break;
-      case "Paper":
-        return (round = "You must've been reading my mind!");
-        break;
-      case "Scissors":
-        scoreboard(-1);
-        return (round = "You Lose! Scissors Beats Paper");
-        break;
-    }
-  } else if (player === "scissors" || player === "scissor") {
-    switch (computerSelection) {
-      case "Rock":
-        scoreboard(-1);
-        return (round = "You Lose! Rock Beats Scissors!");
-        break;
-      case "Paper":
-        scoreboard(1);
-        return (round = "You Win! Scissors Beats Rock!");
-        break;
-      case "Scissors":
-        return (round = "You must've been reading my mind");
-        break;
-    }
+  let computer = computerSelection;
+
+  const computer1 = document.querySelector(".compScore");
+  computer1.textContent = `Computer Score: ${computerScore}`;
+
+  const player2 = document.querySelector(".userScore");
+  player2.textContent = `Player Score: ${playerScore}`;
+
+  //changing the logic on how the game is played... less code and more readable
+
+  whatWasPicked(computer, player);
+  console.log(`c ${computerSelection} p ${playerSelection} `);
+  if (
+    (player === "rock" && computer === "scissors") ||
+    (player === "paper" && computer === "rock") ||
+    (player === "scissors" && computer === "paper")
+  ) {
+    playerScore++;
+    return (roundWinner = `You`);
+  } else if (player === computer) {
+    // alert("Its a Tie");
   } else {
-    return (round = "Hmm Can't find that one maybe try again");
+    computerScore++;
+    return (roundWinner = `Computer`);
   }
 };
-let totalScore = 0;
-function scoreboard(score) {
-  totalScore += score;
-  return totalScore;
+
+const game = (playerChoice) => {
+  //   for (let i = 0; i < 5; i++) {
+  if (playerScore <= 5) {
+    if (computerScore <= 5) {
+      const playerSelection = playerChoice;
+      const computerSelection = getComputerChoice();
+      playRound(playerSelection, computerSelection);
+      //   console.log(scoreboard(0));
+    } else gameOver();
+  } else gameOver();
+};
+
+const newGame = () => {
+  playerScore = 0;
+  computerScore = 0;
+  roundWinner = "";
+  resetScores();
+};
+
+function whatWasPicked(computerMove, playerMove) {
+  let computerPicked = document.querySelectorAll(`#game`);
+  computerPicked.forEach((computerPick) => {
+    if (computerMove == computerPick.className) {
+      const myDiv = document.querySelector(`.${computerMove}`);
+      myDiv.classList.add("computer");
+    } else if (playerMove == computerPick.className) {
+      const myDiv = document.querySelector(`.${playerMove}`);
+      myDiv.classList.add("player");
+    } else if (playerMove === computerMove) {
+      const myDiv = document.querySelector(`.${playerMove}`);
+      myDiv.classList.add("tie");
+    }
+  });
 }
 
-// const game = () =>{
-//     for( let i = 0; i < 5; i++){
-//     const playerSelection = prompt("Rock,Paper,or Scissors");
-//     const computerSelection = getComputerChoice();
+const gameOver = () => {
+  console.log(`its over`);
+};
+const clearSelections = () => {};
 
-//     console.log(playRound(playerSelection, computerSelection));
-//     }
-//     console.log(scoreboard(0));
-// };
-// game();
+const resetScores = () => {
+  const computer1 = document.querySelector(".compScore");
+  computer1.textContent = `Computer Score: ${computerScore}`;
+
+  const player2 = document.querySelector(".userScore");
+  player2.textContent = `Player Score: ${playerScore}`;
+};
