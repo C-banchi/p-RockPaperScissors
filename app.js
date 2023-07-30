@@ -59,30 +59,32 @@ const playRound = (playerSelection, computerSelection) => {
   //changing the logic on how the game is played... less code and more readable
 
   whatWasPicked(computer, player);
-  console.log(`c ${computerSelection} p ${playerSelection} `);
   if (
     (player === "rock" && computer === "scissors") ||
     (player === "paper" && computer === "rock") ||
     (player === "scissors" && computer === "paper")
   ) {
     playerScore++;
+    let pUpdate = document.querySelector("p");
+    pUpdate.textContent = ` You Win!! ${player} beats ${computer}`;
     return (roundWinner = `You`);
   } else if (player === computer) {
-    // alert("Its a Tie");
+    let pUpdate = document.querySelector("p");
+    pUpdate.textContent = ` Its A Tie!!`;
   } else {
     computerScore++;
+    let pUpdate = document.querySelector("p");
+    pUpdate.textContent = ` You Lose!! ${computer} beats ${player}`;
     return (roundWinner = `Computer`);
   }
 };
 
 const game = (playerChoice) => {
-  //   for (let i = 0; i < 5; i++) {
   if (playerScore <= 5) {
     if (computerScore <= 5) {
       const playerSelection = playerChoice;
       const computerSelection = getComputerChoice();
       playRound(playerSelection, computerSelection);
-      //   console.log(scoreboard(0));
     } else gameOver();
   } else gameOver();
 };
@@ -114,17 +116,27 @@ function whatWasPicked(computerMove, playerMove) {
   });
 }
 function clearSelections() {
+  //get the id game
   let gameDiv = document.querySelectorAll("#game");
+  //the divs i want to remove
   const removeDiv = ["tie", "player", "computer"];
   gameDiv.forEach((gd) => {
+    //loop over all the game dives
     removeDiv.forEach((e) => {
+      //remove from whats in the array -> e
       gd.classList.remove(e);
     });
   });
 }
 
 const gameOver = () => {
-  console.log(`its over`);
+  if (playerScore > 5) {
+    let pUpdate = document.querySelector("p");
+    pUpdate.textContent = `You Beat the Computer!!`;
+  } else {
+    let pUpdate = document.querySelector("p");
+    pUpdate.textContent = `Ai won this one! Better Luck Next Time!`;
+  }
 };
 
 const resetScores = () => {
@@ -133,7 +145,9 @@ const resetScores = () => {
 
   const player2 = document.querySelector(".userScore");
   player2.textContent = `Player Score: ${playerScore}`;
-};
 
-// const keys = document.querySelectorAll("#game");
-// keys.forEach((key) => key.addEventListener("transitionend", clearSelections));
+  let pUpdate = document.querySelector("p");
+  pUpdate.textContent = `Who will win this time?`;
+
+  clearSelections();
+};

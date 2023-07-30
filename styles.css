@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(red, green, blue);
+}
 .header,
 .footer {
   display: flex;
@@ -26,7 +32,7 @@ a {
 .body {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 85vh;
   margin: 0;
   /* overflow: hidden; */
   font-family: Roboto, sans-serif;
@@ -44,6 +50,10 @@ img {
   gap: 30px;
   padding: 10px;
   color: rgb(233, 178, 106);
+}
+p {
+  color: rgb(233, 178, 106);
+  text-align: center;
 }
 .compScore .userScore {
   border: 1px solid #eee;
@@ -75,13 +85,13 @@ button {
 }
 .computer {
   border-style: dashed;
-  border-color: red;
+  border-color: rgb(0, 118, 110);
 }
 .player {
   border-style: solid;
-  border-color: green;
+  border-color: rgb(233, 178, 106);
 }
 .tie {
   border-style: dotted dashed solid double;
-  border-color: blue;
+  border-color: rgb(14, 24, 38);
 }
