@@ -45,9 +45,10 @@ let computerScore = 0;
 let roundWinner = "";
 
 const playRound = (playerSelection, computerSelection) => {
-  clearSelections();
   let player = playerSelection.toLowerCase();
   let computer = computerSelection;
+
+  clearSelections();
 
   const computer1 = document.querySelector(".compScore");
   computer1.textContent = `Computer Score: ${computerScore}`;
@@ -94,10 +95,14 @@ const newGame = () => {
 };
 
 function whatWasPicked(computerMove, playerMove) {
+  // this is where i had to do some googling
   let computerPicked = document.querySelectorAll(`#game`);
+  //selecting all the html elements with the id of Game
   computerPicked.forEach((computerPick) => {
+    // I loop through them to see if one of those Id match what the computer selected
     if (computerMove == computerPick.className) {
       const myDiv = document.querySelector(`.${computerMove}`);
+      //  then select that div and give it a boarder based on who selected it
       myDiv.classList.add("computer");
     } else if (playerMove == computerPick.className) {
       const myDiv = document.querySelector(`.${playerMove}`);
@@ -108,11 +113,19 @@ function whatWasPicked(computerMove, playerMove) {
     }
   });
 }
+function clearSelections() {
+  let gameDiv = document.querySelectorAll("#game");
+  const removeDiv = ["tie", "player", "computer"];
+  gameDiv.forEach((gd) => {
+    removeDiv.forEach((e) => {
+      gd.classList.remove(e);
+    });
+  });
+}
 
 const gameOver = () => {
   console.log(`its over`);
 };
-const clearSelections = () => {};
 
 const resetScores = () => {
   const computer1 = document.querySelector(".compScore");
@@ -121,3 +134,6 @@ const resetScores = () => {
   const player2 = document.querySelector(".userScore");
   player2.textContent = `Player Score: ${playerScore}`;
 };
+
+// const keys = document.querySelectorAll("#game");
+// keys.forEach((key) => key.addEventListener("transitionend", clearSelections));
